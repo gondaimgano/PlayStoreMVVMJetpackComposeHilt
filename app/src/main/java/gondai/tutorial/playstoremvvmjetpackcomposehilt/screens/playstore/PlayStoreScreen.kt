@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
+import gondai.tutorial.playstoremvvmjetpackcomposehilt.screens.product.ProductView
 import gondai.tutorial.playstoremvvmjetpackcomposehilt.screens.product.ProductViewModel
 
 @Composable
@@ -48,23 +49,7 @@ fun PlayStoreScreen(model:PlayStoreViewModel= hiltViewModel()){
                  LazyColumn(modifier = Modifier.padding(innerPadding)){
                      items(stores){
                          item ->
-                         val productModel:ProductViewModel= hiltViewModel()
-                         val products = productModel.getProductPagination(item).collectAsLazyPagingItems()
-
-                         Column {
-                             Text(item)
-                             Spacer(modifier = Modifier.padding(8.dp))
-                             LazyRow{
-                                 items(products){
-                                         product->
-                                     Text(product?:"Empty",
-                                         modifier = Modifier
-                                             .padding(8.dp)
-                                             .fillMaxWidth(0.18f))
-                                 }
-                             }
-
-                         }
+                         ProductView(item = item)
                      }
                  }
              }
