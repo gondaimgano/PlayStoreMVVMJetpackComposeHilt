@@ -1,9 +1,6 @@
 package gondai.tutorial.playstoremvvmjetpackcomposehilt.screens.product
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -17,7 +14,9 @@ fun ProductView(productModel:ProductViewModel= hiltViewModel(),item:String) {
 
     val products = productModel.getProductPagination(item).collectAsLazyPagingItems()
 
-    Column {
+    Column(
+        modifier = Modifier.padding(8.dp).fillMaxHeight(0.18f)
+    ) {
         Text(item)
         Spacer(modifier = Modifier.padding(8.dp))
         LazyRow{
